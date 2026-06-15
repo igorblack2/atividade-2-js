@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #fffde7);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        header {
+            background: #81d4fa;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #0277bd;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        button {
+            background: #ff8a80;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        button:hover {
+            background: #ff5252;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            min-height: 20px;
+            font-weight: bold;
+        }
+        .success { background: #c8e6c9; color: #1b5e20; }
+        .warning { background: #fff3e0; color: #e65100; }
+        .danger { background: #ffcdd2; color: #b71c1c; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista de Exercícios JavaScript </h1>
+        <p>IGOR - Clique em Executar para testar cada atividade</p>
+    </header>
+
+    <div class="grid">
+
+        <!-- Questão 2 -->
+        <div class="card">
+            <h2>Questão 02 - Sensor de Temperatura Industrial</h2>
+            <div class="input-group">
+                <label>Temperatura (°C):</label>
+                <input type="number" id="temp2" value="25">
+            </div>
+            <button onclick="executarQ2()">Executar</button>
+            <div id="res2" class="result"></div>
+        </div>
+
+        <!-- Questão 3 -->
+        <div class="card">
+            <h2>Questão 03 - Aprovação Escolar</h2>
+            <div class="input-group">
+                <label>Média:</label>
+                <input type="number" id="media3" value="7.5" step="0.1">
+            </div>
+            <div class="input-group">
+                <label>Frequência (%):</label>
+                <input type="number" id="freq3" value="80">
+            </div>
+            <button onclick="executarQ3()">Executar</button>
+            <div id="res3" class="result"></div>
+        </div>
+
+        <!-- Questão 4 -->
+        <div class="card">
+            <h2>Questão 04 - Análise de Crédito (Fintech)</h2>
+            <div class="input-group">
+                <label>Salário (R$):</label>
+                <input type="number" id="sal4" value="3000">
+            </div>
+            <div class="input-group">
+                <label>Valor da Parcela (R$):</label>
+                <input type="number" id="parc4" value="800">
+            </div>
+            <div class="input-group">
+                <label>Tempo na Empresa (meses):</label>
+                <input type="number" id="tempo4" value="8">
+            </div>
+            <button onclick="executarQ4()">Executar</button>
+            <div id="res4" class="result"></div>
+        </div>
+
+        <!-- Questão 5 -->
+        <div class="card">
+            <h2>Questão 05 - Refatoração if/else</h2>
+            <div class="input-group">
+                <label>Usuário Logado:</label>
+                <select id="log5">
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Possui Assinatura:</label>
+                <select id="ass5">
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+            </div>
+            <button onclick="executarQ5()">Executar</button>
+            <div id="res5" class="result"></div>
+        </div>
+
+        <!-- Questão 6 -->
+        <div class="card">
+            <h2>Questão 06 - Verificar Ano Bissexto</h2>
+            <div class="input-group">
+                <label>Ano:</label>
+                <input type="number" id="ano6" value="2024">
+            </div>
+            <button onclick="executarQ6()">Executar</button>
+            <div id="res6" class="result"></div>
+        </div>
+
+        <!-- Questão 7 -->
+        <div class="card">
+            <h2>Questão 07 - Sistema de Login Simples</h2>
+            <div class="input-group">
+                <label>Usuário:</label>
+                <input type="text" id="user7" value="admin">
+            </div>
+            <div class="input-group">
+                <label>Senha:</label>
+                <input type="password" id="pass7" value="1234">
+            </div>
+            <button onclick="executarQ7()">Executar</button>
+            <div id="res7" class="result"></div>
+        </div>
+
+        <!-- Questão 8 -->
+        <div class="card">
+            <h2>Questão 08 - Semáforo Inteligente</h2>
+            <div class="input-group">
+                <label>Cor do Semáforo:</label>
+                <select id="cor8">
+                    <option value="Verde">Verde</option>
+                    <option value="Amarelo">Amarelo</option>
+                    <option value="Vermelho">Vermelho</option>
+                    <option value="Azul">Outra</option>
+                </select>
+            </div>
+            <button onclick="executarQ8()">Executar</button>
+            <div id="res8" class="result"></div>
+        </div>
+
+        <!-- Questão 9 -->
+        <div class="card">
+            <h2>Questão 09 - Verificador de Números</h2>
+            <div class="input-group">
+                <label>Número:</label>
+                <input type="number" id="num9" value="42">
+            </div>
+            <button onclick="executarQ9()">Executar</button>
+            <div id="res9" class="result"></div>
+        </div>
+
+        <!-- Questão 10 -->
+        <div class="card">
+            <h2>Questão 10 - Cálculo de Frete (E-commerce)</h2>
+            <div class="input-group">
+                <label>Valor da Compra (R$):</label>
+                <input type="number" id="compra10" value="250">
+            </div>
+            <div class="input-group">
+                <label>Cliente VIP:</label>
+                <select id="vip10">
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+            </div>
+            <button onclick="executarQ10()">Executar</button>
+            <div id="res10" class="result"></div>
+        </div>
+
+        <!-- Questão 11 -->
+        <div class="card">
+            <h2>Questão 11 - Validador de Triângulos</h2>
+            <div class="input-group">
+                <label>Lado A:</label>
+                <input type="number" id="a11" value="5" step="0.1">
+            </div>
+            <div class="input-group">
+                <label>Lado B:</label>
+                <input type="number" id="b11" value="5" step="0.1">
+            </div>
+            <div class="input-group">
+                <label>Lado C:</label>
+                <input type="number" id="c11" value="5" step="0.1">
+            </div>
+            <button onclick="executarQ11()">Executar</button>
+            <div id="res11" class="result"></div>
+        </div>
+
+        <!-- Questão 12 -->
+        <div class="card">
+            <h2>Questão 12 - Correção: Pode Votar?</h2>
+            <div class="input-group">
+                <label>Idade:</label>
+                <input type="number" id="idade12" value="17">
+            </div>
+            <button onclick="executarQ12()">Executar (Corrigido)</button>
+            <div id="res12" class="result"></div>
+        </div>
+
+        <!-- Questão 13 -->
+        <div class="card">
+            <h2>Questão 13 - Conversor de Notas</h2>
+            <div class="input-group">
+                <label>Nota (A/B/C/D/F):</label>
+                <input type="text" id="nota13" value="B" maxlength="1" style="text-transform: uppercase;">
+            </div>
+            <button onclick="executarQ13()">Executar</button>
+            <div id="res13" class="result"></div>
+        </div>
+
+        <!-- Questão 14 -->
+        <div class="card">
+            <h2>Questão 14 - Quiz Diagnóstico de Saúde</h2>
+            <div class="input-group">
+                <label><input type="checkbox" id="febre14"> Tem Febre?</label>
+            </div>
+            <div class="input-group">
+                <label><input type="checkbox" id="tosse14"> Tem Tosse?</label>
+            </div>
+            <div class="input-group">
+                <label><input type="checkbox" id="fadiga14"> Tem Fadiga?</label>
+            </div>
+            <button onclick="executarQ14()">Executar</button>
+            <div id="res14" class="result"></div>
+        </div>
+
+        <!-- Questão 15 -->
+        <div class="card">
+            <h2>Questão 15 - Calculadora de IMC</h2>
+            <div class="input-group">
+                <label>Peso (kg):</label>
+                <input type="number" id="peso15" value="70" step="0.1">
+            </div>
+            <div class="input-group">
+                <label>Altura (m):</label>
+                <input type="number" id="altura15" value="1.75" step="0.01">
+            </div>
+            <button onclick="executarQ15()">Executar</button>
+            <div id="res15" class="result"></div>
+        </div>
+
+        <!-- Questão 16 -->
+        <div class="card">
+            <h2>Questão 16 - FizzBuzz</h2>
+            <div class="input-group">
+                <label>Número:</label>
+                <input type="number" id="num16" value="15">
+            </div>
+            <button onclick="executarQ16()">Executar</button>
+            <div id="res16" class="result"></div>
+        </div>
+
+        <!-- Questão 17 -->
+        <div class="card">
+            <h2>Questão 17 - Desconto Progressivo</h2>
+            <div class="input-group">
+                <label>Valor da Compra (R$):</label>
+                <input type="number" id="val17" value="350">
+            </div>
+            <button onclick="executarQ17()">Executar</button>
+            <div id="res17" class="result"></div>
+        </div>
+
+        <!-- Questão 18 -->
+        <div class="card">
+            <h2>Questão 18 - Verificar String Vazia</h2>
+            <div class="input-group">
+                <label>Texto:</label>
+                <input type="text" id="str18" value="   ">
+            </div>
+            <button onclick="executarQ18()">Executar</button>
+            <div id="res18" class="result"></div>
+        </div>
+
+        <!-- Questão 19 -->
+        <div class="card">
+            <h2>Questão 19 - Regras de Dano (RPG)</h2>
+            <div class="input-group">
+                <label>Resultado do Dado (1-20):</label>
+                <input type="number" id="dado19" value="20" min="1" max="20">
+            </div>
+            <button onclick="executarQ19()">Executar</button>
+            <div id="res19" class="result"></div>
+        </div>
+
+        <!-- Questão 20 -->
+        <div class="card">
+            <h2>Questão 20 - Período do Dia</h2>
+            <div class="input-group">
+                <label>Hora (0-23):</label>
+                <input type="number" id="hora20" value="14" min="0" max="23">
+            </div>
+            <button onclick="executarQ20()">Executar</button>
+            <div id="res20" class="result"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Questão 2
+        function executarQ2() {
+            const temp = parseFloat(document.getElementById('temp2').value);
+            let msg = '';
+            if (temp < 0) msg = 'Congelante';
+            else if (temp <= 15) msg = 'Resfriado';
+            else if (temp <= 30) msg = 'Ideal';
+            else msg = 'Superaquecimento';
+            if (temp === 100) msg += ' - Perigo: Vapor';
+            document.getElementById('res2').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res2').className = 'result success';
+        }
+
+        // Questão 3
+        function executarQ3() {
+            const media = parseFloat(document.getElementById('media3').value);
+            const freq = parseFloat(document.getElementById('freq3').value);
+            let status = '';
+            if (media >= 7 && freq >= 75) status = 'Aprovado';
+            else if (media >= 5 && media <= 6.9 && freq >= 75) status = 'Recuperação';
+            else status = 'Reprovado';
+            document.getElementById('res3').innerHTML = `<strong>${status}</strong>`;
+            document.getElementById('res3').className = status === 'Aprovado' ? 'result success' : 'result danger';
+        }
+
+        // Questão 4
+        function executarQ4() {
+            const salario = parseFloat(document.getElementById('sal4').value);
+            const parcela = parseFloat(document.getElementById('parc4').value);
+            const tempo = parseFloat(document.getElementById('tempo4').value);
+            let resultado = '';
+            if (tempo < 6) {
+                resultado = 'Empréstimo NEGADO: Tempo de empresa insuficiente (&lt; 6 meses)';
+            } else if (parcela > salario * 0.3) {
+                resultado = 'Empréstimo NEGADO: Parcela excede 30% do salário';
+            } else {
+                resultado = 'Empréstimo APROVADO';
+            }
+            document.getElementById('res4').innerHTML = `<strong>${resultado}</strong>`;
+            document.getElementById('res4').className = resultado.includes('APROVADO') ? 'result success' : 'result danger';
+        }
+
+        // Questão 5
+        function executarQ5() {
+            const logado = document.getElementById('log5').value === 'true';
+            const assinatura = document.getElementById('ass5').value === 'true';
+            let msg = '';
+            if (logado && assinatura) {
+                msg = 'Acesso liberado';
+            } else if (!logado) {
+                msg = 'Login necessário';
+            } else {
+                msg = 'Assinatura necessária';
+            }
+            document.getElementById('res5').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res5').className = 'result success';
+        }
+
+        // Questão 6
+        function executarQ6() {
+            const ano = parseInt(document.getElementById('ano6').value);
+            let msg = '';
+            if ((ano % 4 === 0 && ano % 100 !== 0) || (ano % 400 === 0)) {
+                msg = `${ano} é bissexto`;
+            } else {
+                msg = `${ano} NÃO é bissexto`;
+            }
+            document.getElementById('res6').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res6').className = 'result success';
+        }
+
+        // Questão 7
+        function executarQ7() {
+            const user = document.getElementById('user7').value.trim().toLowerCase();
+            const pass = document.getElementById('pass7').value;
+            let msg = '';
+            if (user === 'admin' && pass === '1234') {
+                msg = 'Acesso Total';
+            } else if (user === 'guest' && pass === 'guest') {
+                msg = 'Acesso Limitado';
+            } else {
+                msg = 'Falha na Autenticação';
+            }
+            document.getElementById('res7').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res7').className = msg.includes('Acesso') ? 'result success' : 'result danger';
+        }
+
+        // Questão 8
+        function executarQ8() {
+            const cor = document.getElementById('cor8').value;
+            let msg = '';
+            if (cor === 'Verde') msg = 'Siga';
+            else if (cor === 'Amarelo') msg = 'Atenção';
+            else if (cor === 'Vermelho') msg = 'Pare';
+            else msg = 'Semáforo com defeito';
+            document.getElementById('res8').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res8').className = 'result success';
+        }
+
+        // Questão 9
+        function executarQ9() {
+            const num = parseFloat(document.getElementById('num9').value);
+            let msg = '';
+            if (num > 0) {
+                if (num % 2 === 0) msg = 'Positivo e Par';
+                else msg = 'Positivo e Ímpar';
+            } else if (num < 0) {
+                msg = 'Negativo';
+            } else {
+                msg = 'Zero';
+            }
+            document.getElementById('res9').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res9').className = 'result success';
+        }
+
+        // Questão 10
+        function executarQ10() {
+            const valor = parseFloat(document.getElementById('compra10').value);
+            const vip = document.getElementById('vip10').value === 'true';
+            let frete = 0;
+            if (vip && valor > 200) {
+                frete = 0;
+            } else if (vip) {
+                frete = 10;
+            } else {
+                frete = 25;
+            }
+            document.getElementById('res10').innerHTML = `<strong>Frete: R$ ${frete.toFixed(2)}</strong>`;
+            document.getElementById('res10').className = 'result success';
+        }
+
+        // Questão 11
+        function executarQ11() {
+            const a = parseFloat(document.getElementById('a11').value);
+            const b = parseFloat(document.getElementById('b11').value);
+            const c = parseFloat(document.getElementById('c11').value);
+            let msg = '';
+            if (a + b > c && a + c > b && b + c > a) {
+                if (a === b && b === c) msg = 'Equilátero';
+                else if (a === b || a === c || b === c) msg = 'Isósceles';
+                else msg = 'Escaleno';
+            } else {
+                msg = 'Não forma um triângulo';
+            }
+            document.getElementById('res11').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res11').className = 'result success';
+        }
+
+        // Questão 12
+        function executarQ12() {
+            const idade = parseInt(document.getElementById('idade12').value);
+            let msg = idade >= 16 ? 'Pode votar' : 'Não pode votar';
+            document.getElementById('res12').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res12').className = 'result success';
+        }
+
+        // Questão 13
+        function executarQ13() {
+            const nota = document.getElementById('nota13').value.trim().toUpperCase();
+            let conceito = '';
+            if (nota === 'A' || nota === 'B') conceito = 'Excelente';
+            else if (nota === 'C') conceito = 'Suficiente';
+            else if (nota === 'D' || nota === 'F') conceito = 'Insuficiente';
+            else conceito = 'Nota inválida';
+            document.getElementById('res13').innerHTML = `<strong>${conceito}</strong>`;
+            document.getElementById('res13').className = 'result success';
+        }
+
+        // Questão 14
+        function executarQ14() {
+            const febre = document.getElementById('febre14').checked;
+            const tosse = document.getElementById('tosse14').checked;
+            const fadiga = document.getElementById('fadiga14').checked;
+            const count = (febre ? 1 : 0) + (tosse ? 1 : 0) + (fadiga ? 1 : 0);
+            let msg = '';
+            if (count === 3) msg = 'Procure um médico';
+            else if (count === 2) msg = 'Fique em observação';
+            else msg = 'Saúde instável';
+            document.getElementById('res14').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res14').className = count === 3 ? 'result danger' : 'result warning';
+        }
+
+        // Questão 15
+        function executarQ15() {
+            const peso = parseFloat(document.getElementById('peso15').value);
+            const altura = parseFloat(document.getElementById('altura15').value);
+            if (altura <= 0) {
+                document.getElementById('res15').innerHTML = '<strong>Altura inválida</strong>';
+                return;
+            }
+            const imc = peso / (altura * altura);
+            let categoria = '';
+            if (imc < 18.5) categoria = 'Abaixo do peso';
+            else if (imc < 25) categoria = 'Normal';
+            else if (imc < 30) categoria = 'Sobrepeso';
+            else categoria = 'Obesidade';
+            document.getElementById('res15').innerHTML = `<strong>IMC: ${imc.toFixed(2)} - ${categoria}</strong>`;
+            document.getElementById('res15').className = 'result success';
+        }
+
+        // Questão 16
+        function executarQ16() {
+            const num = parseInt(document.getElementById('num16').value);
+            let msg = '';
+            if (num % 3 === 0 && num % 5 === 0) msg = 'FizzBuzz';
+            else if (num % 3 === 0) msg = 'Fizz';
+            else if (num % 5 === 0) msg = 'Buzz';
+            else msg = num.toString();
+            document.getElementById('res16').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res16').className = 'result success';
+        }
+
+        // Questão 17
+        function executarQ17() {
+            const valor = parseFloat(document.getElementById('val17').value);
+            let desconto = 0;
+            if (valor >= 500) desconto = 0.20;
+            else if (valor >= 200) desconto = 0.10;
+            const final = valor * (1 - desconto);
+            document.getElementById('res17').innerHTML = `<strong>Valor final: R$ ${final.toFixed(2)} (${desconto*100}% de desconto)</strong>`;
+            document.getElementById('res17').className = 'result success';
+        }
+
+        // Questão 18
+        function executarQ18() {
+            const str = document.getElementById('str18').value;
+            const isEmpty = str.trim() === '';
+            document.getElementById('res18').innerHTML = `<strong>${isEmpty ? 'Vazia' : 'Preenchida'}</strong>`;
+            document.getElementById('res18').className = 'result success';
+        }
+
+        // Questão 19
+        function executarQ19() {
+            const dado = parseInt(document.getElementById('dado19').value);
+            let msg = '';
+            if (dado === 20) msg = 'Crítico (Dano Dobrado)';
+            else if (dado === 1) msg = 'Falha Crítica (Dano Zero)';
+            else msg = 'Dano Normal';
+            document.getElementById('res19').innerHTML = `<strong>${msg}</strong>`;
+            document.getElementById('res19').className = dado === 20 ? 'result success' : (dado === 1 ? 'result danger' : 'result success');
+        }
+
+        // Questão 20
+        function executarQ20() {
+            const hora = parseInt(document.getElementById('hora20').value);
+            let periodo = '';
+            if (hora >= 6 && hora <= 11) periodo = 'Bom dia';
+            else if (hora >= 12 && hora <= 17) periodo = 'Boa tarde';
+            else if (hora >= 18 && hora <= 23) periodo = 'Boa noite';
+            else periodo = 'Boa madrugada';
+            document.getElementById('res20').innerHTML = `<strong>${periodo}</strong>`;
+            document.getElementById('res20').className = 'result success';
+        }
+    </script>
+</body>
+</html>
